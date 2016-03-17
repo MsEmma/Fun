@@ -15,23 +15,15 @@ exports.quantity = function(message1) {
 
 exports.cost = function(message2) {
 
-  var words = message2.split(' ');
+  var string = message2.replace(/[^\w\d\s]/g, "");
+  var list = string.match(/(\w+)(\s)+(\d+)/g);
+  var costMap = {};
 
-  for (i = 0; i < words.length; i++) {
-    if (words[i] === "-") {
-      words.splice(i, 1);
-      i--
-    }
-  }
-
-  costMap = {};
-
-  for (i = 0; i < words.length; i++) {
-
-    if (!isNaN(words[i])) {
-      costMap[words[i - 1]] = Number(words[i]);
-    }
-  }
+  list.forEach(function(str) {
+    var food = str.match(/\w+/);
+    var cost = str.match(/\d+/);
+    costMap[food] = Number(cost);
+  });
 
   return costMap;
 

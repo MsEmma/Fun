@@ -13,7 +13,7 @@ describe("fun", function() {
   });
 
   it("should return the cost of each food item", function() {
-    result = fun.cost("Please send me the payment via EFT prices are as follows: burgers - 37 each, beers - 12 , fantas 9");
+    result = fun.cost("Please send me the payment via EFT prices are as follows: burgers - 37 each, beers - 12, fantas 9");
     assert.deepEqual(result, {
       "burgers": 37,
       "beers": 12,
